@@ -1,0 +1,19 @@
+{
+    "name": "laravelcity/seochecker",
+    "description": "This is a package for check post SEO",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "saeid hooshyar",
+            "email": "saeedhooshyar70@gmail.com",
+            "homepage": "https://saeidhooshyar.ir",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Lydaweb\\SeoChecker\\": "src/"
+        }
+    }
+
+}

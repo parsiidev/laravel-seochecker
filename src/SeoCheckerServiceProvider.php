@@ -16,17 +16,6 @@ class SeoCheckerServiceProvider extends ServiceProvider
     public function boot(Router $router)
     {
 
-        // views
-        $this->loadViewsFrom(__DIR__.'/Views', 'SeoChecker');
-
-        $this->publishes([
-            __DIR__ . '/Views/' => resource_path('views/vendor/laravelcity/seochecker') ,
-        ] , 'SeoChecker');
-
-
-        $this->loadTranslationsFrom(__DIR__.'/Lang/', 'SeoChecker');
-
-
 
         $config = config('seochecker.route', []);
 
@@ -37,6 +26,16 @@ class SeoCheckerServiceProvider extends ServiceProvider
         {
             $router->any('seo/analyze', 'Controller@ajaxAnalayze')->name('seochecker.ajax');
         });
+
+        // views
+        $this->loadViewsFrom(__DIR__.'/Views', 'SeoChecker');
+
+        $this->loadTranslationsFrom(__DIR__.'/Lang/', 'SeoChecker');
+
+        $this->publishes([
+            __DIR__ . '/Views/' => resource_path('views/vendor/SeoChecker') ,
+        ]);
+
 
         //bind
         $this->app->bind('SeoCheckerClass',function (){
@@ -63,8 +62,8 @@ class SeoCheckerServiceProvider extends ServiceProvider
 
 
         $this->publishes([
-            __DIR__ . '/Lang/' => resource_path('lang/vendor/seochecker') ,
-        ],'SeoChecker');
+            __DIR__ . '/Lang/' => resource_path('lang/vendor/SeoChecker') ,
+        ]);
 
       
     }

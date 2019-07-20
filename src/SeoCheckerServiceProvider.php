@@ -15,10 +15,18 @@ class SeoCheckerServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        $this->loadTranslationsFrom(__DIR__.'/Lang/', 'SeoChecker');
 
         // views
         $this->loadViewsFrom(__DIR__.'/Views', 'SeoChecker');
+
+        $this->publishes([
+            __DIR__ . '/Views/' => resource_path('views/vendor/laravelcity/seochecker') ,
+        ] , 'SeoChecker');
+
+
+        $this->loadTranslationsFrom(__DIR__.'/Lang/', 'SeoChecker');
+
+
 
         $config = config('seochecker.route', []);
 
@@ -43,22 +51,22 @@ class SeoCheckerServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
         //configs
         $this->mergeConfigFrom(
             __DIR__ . '/Config/seochecker.php', 'seochecker'
         );
+
         $this->publishes([
             __DIR__ . '/Config/seochecker.php' => config_path('seochecker.php'),
         ],'seochecker');
 
+
         $this->publishes([
             __DIR__ . '/Lang/' => resource_path('lang/vendor/seochecker') ,
-        ]);
+        ],'SeoChecker');
 
-        $this->publishes([
-            __DIR__ . '/Views/' => public_path('vendor/laravelcity/seochecker') ,
-        ] , 'seochecker');
-
+      
     }
 
 }

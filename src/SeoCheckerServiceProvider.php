@@ -51,6 +51,14 @@ class SeoCheckerServiceProvider extends ServiceProvider
             __DIR__ . '/Config/seochecker.php' => config_path('seochecker.php'),
         ],'seochecker');
 
+        $this->publishes([
+            __DIR__ . '/Lang/' => resource_path('lang/vendor/seochecker') ,
+        ]);
+
+        $this->publishes([
+            __DIR__ . '/Views/' => public_path('vendor/laravelcity/seochecker') ,
+        ] , 'seochecker');
+
     }
 
 }
